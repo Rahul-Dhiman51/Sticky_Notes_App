@@ -7,3 +7,5 @@ The Sticky Notes App is a simple web application built using React that allows u
 - Create new notes with titles and content.
 - Add lists to note content and mark items as done.
 - Delete notes when they are no longer needed.
+
+- #Deployed Link- https://sticky-notes-app-rd.netlify.app/
