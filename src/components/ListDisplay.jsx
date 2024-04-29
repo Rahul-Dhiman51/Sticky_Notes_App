@@ -7,9 +7,9 @@ function ListDisplay({ inputString }) {
   function HandleOnClick(idx) {
     // console.log(isTrue);
     setIsTrue((prevValue) => {
-        const newState = [...prevValue];
-        newState[idx] = !newState[idx];
-        return newState;
+      const newState = [...prevValue];
+      newState[idx] = !newState[idx];
+      return newState;
     });
   }
 
@@ -26,8 +26,8 @@ function ListDisplay({ inputString }) {
     <ul>
       {lines.map((line, idx) => (
         <li
-          onClick={()=>HandleOnClick(idx)}
-          style={{ textDecoration: isTrue[idx] ? "line-through" : "none", listStyle: "circle"} }
+          onClick={() => HandleOnClick(idx)}
+          style={{ textDecoration: isTrue[idx] ? "line-through" : "none", listStyle: "circle" }}
           key={idx}
         ><Linkify componentDecorator={linkDecorator}>{line} </Linkify>
         </li>
