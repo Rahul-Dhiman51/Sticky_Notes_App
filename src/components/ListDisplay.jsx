@@ -1,8 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Linkify from 'react-linkify';
+import { loadNotesFromLocalStorage, saveNotesToLocalStorage } from "./localStorageUtils";
 
-function ListDisplay({ inputString }) {
-  const [isTrue, setIsTrue] = useState(new Array(inputString.split("\n").length).fill(false));
+function ListDisplay({ id, inputString, isToggled }) {
+  isToggled = isToggled || new Array(inputString.split("\n").length).fill(false);
+  const [isTrue, setIsTrue] = useState(isToggled);
+
+  function updateIsToggledInLocalStorage(id, updatedIsToggled) {
+    const notes = loadNotesFromLocalStorage();
+    const updatedNotes = notes.map((note) => {
+      if (note.id === id) {
+        return { ...note, isToggled: updatedIsToggled };
+      }
+      return note;
+    });
+    saveNotesToLocalStorage(updatedNotes);
+  }
+
+  useEffect(() => {
+    updateIsToggledInLocalStorage(id, isTrue);
+  }, [isTrue])
+
 
   function HandleOnClick(idx) {
     // console.log(isTrue);

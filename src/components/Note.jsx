@@ -3,7 +3,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import ListDisplay from "./ListDisplay";
 
-function Note({ id, title: initialTitle, content: initialContent, onEdit, onDel }) {
+function Note({ id, title: initialTitle, content: initialContent, isToggled, onEdit, onDel }) {
   const [title, setTitle] = useState(initialTitle);
   const [content, setContent] = useState(initialContent);
   const [isEditing, setIsEditing] = useState(false);
@@ -38,7 +38,7 @@ function Note({ id, title: initialTitle, content: initialContent, onEdit, onDel 
       ) : (
         <>
           <h1>{title}</h1>
-          <ListDisplay inputString={content} />
+          <ListDisplay id={id} isToggled={isToggled} inputString={content} />
           <button onClick={handleEditClick}>
             <EditIcon />
           </button>
