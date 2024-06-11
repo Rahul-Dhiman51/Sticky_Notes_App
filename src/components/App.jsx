@@ -11,10 +11,12 @@ function App() {
   const [notes, setNotes] = useState(loadNotesFromLocalStorage());
 
   function addNotes(note) {
+    if (note.title === "" && note.content === "") return;
     const newNote = {
       id: uuidv4(),
       title: note.title,
       content: note.content,
+      isToggled: new Array(note.content.split("\n").length).fill(false)
     };
 
     setNotes((prevValue) => {
@@ -57,6 +59,7 @@ function App() {
           onEdit={editNote}
           title={note.title}
           content={note.content}
+          isToggled={note.isToggled}
         />
       ))}
       <Footer />
